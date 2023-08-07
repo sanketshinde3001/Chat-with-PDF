@@ -37,7 +37,7 @@ def main():
                VectorStore = pickle.load(f)
 
          else:
-            embeddings = OpenAIEmbeddings()
+            embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
             VectorStore = FAISS.from_texts(chunks, embedding=embeddings)
             with open(f"{store_name}.pkl", "wb") as f:
                pickle.dump(VectorStore, f)
@@ -57,6 +57,7 @@ def main():
 with st.container():
 
     openai_api_key = st.text_input("OpenAI API Key", type="password")
+   #  os.environ["OPENAI_API_KEY"]= openai_api_key
     openai.api_key = openai_api_key
     if not openai_api_key:
         st.info("Please add your OpenAI API key to continue.")   
