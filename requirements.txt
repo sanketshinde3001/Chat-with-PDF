@@ -4,4 +4,3 @@ python-dotenv
 streamlit
 faiss-cpu
 streamlit-extras
-os
